@@ -37,7 +37,7 @@ Process proc = ["java", "-cp", task.project.sourceSets.main.runtimeClasspath.asP
    proc.consumeProcessErrorStream(System.err)
    proc.consumeProcessOutputStream(System.out)
    if (proc.waitFor() != 0) {
-       throw new RuntimeException('exec failed')
+       throw new RuntimeException('exec server failed')
    }
 }
 
@@ -46,6 +46,6 @@ Process proc = ["java", "-cp", task.project.sourceSets.main.runtimeClasspath.asP
    proc.consumeProcessErrorStream(System.err)
    proc.consumeProcessOutputStream(System.out)
    if (proc.waitFor() != 0) {
-       throw new RuntimeException('exec failed')
+       throw new RuntimeException('exec client failed')
    }
 }
