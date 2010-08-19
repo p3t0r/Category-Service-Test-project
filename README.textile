@@ -28,3 +28,5 @@ Run the server (on port 1234) using:
 Run the client using:
 
 <pre>gradle runClient</pre>
+
+Both these tasks call the compile task before running.
