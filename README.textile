@@ -15,7 +15,16 @@ h1. Layout
 
 h1. Compiling
 
-'<pre>gradle compileJava</pre>' should generate and compile all sources
+Generate and compile all source using:
+
+<pre>gradle compileJava</pre>
 
 h1. Running
 
+Run the server (on port 1234) using:
+
+<pre>gradle runServer</pre>
+
+Run the client using:
+
+<pre>gradle runClient</pre>
