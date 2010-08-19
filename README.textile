@@ -30,3 +30,34 @@ Run the client using:
 <pre>gradle runClient</pre>
 
 Both these tasks call the compile task before running.
+
+h2. Expected output
+
+Server:
+<pre>
+peter ~/dev/thrift/Category-Service-Test-project (master) $ gradle runServer
+:compileJava UP-TO-DATE
+:processResources UP-TO-DATE
+:classes UP-TO-DATE
+:runServer
+2010-08-19 23:10:55 RunCategoryServer [INFO] server setup, starting on port: 1234
+2010-08-19 23:11:02 CategoryServiceImpl [DEBUG] get category is called
+2010-08-19 23:11:02 CategoryServiceImpl [DEBUG] get children is called
+> Building > :runServer
+</pre>
+
+Client:
+<pre>
+peter ~/dev/thrift/Category-Service-Test-project (master) $ gradle runClient
+:compileJava UP-TO-DATE
+:processResources UP-TO-DATE
+:classes UP-TO-DATE
+:runClient
+2010-08-19 23:11:02 CategoryServiceClient [INFO] client ready
+2010-08-19 23:11:02 CategoryServiceClient [DEBUG] calling 'CategoryService.Client#get'
+2010-08-19 23:11:02 CategoryServiceClient [DEBUG] returned category: Category(id:123, name:Category 123)
+2010-08-19 23:11:02 CategoryServiceClient [DEBUG] calling 'CategoryService.Client#getChildren'
+2010-08-19 23:11:02 CategoryServiceClient [DEBUG] returned: [Category(id:0, name:Category 0), Category(id:1, name:Category 1), Category(id:2, name:Category 2), Category(id:3, name:Category 3), Category(id:4, name:Category 4), Category(id:5, name:Category 5), Category(id:6, name:Category 6), Category(id:7, name:Category 7), Category(id:8, name:Category 8), Category(id:9, name:Category 9)]
+
+BUILD SUCCESSFUL
+</pre>
