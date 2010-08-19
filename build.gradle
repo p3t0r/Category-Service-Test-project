@@ -11,8 +11,8 @@ dependencies {
 sourceSets {
     main {
         java {
-            srcDir 'src/main/java'
-            srcDir 'src/generated/java/gen-javabean'
+            srcDir 'src/main/java/'
+            srcDir 'src/generated/java/gen-javabean/'
         }
         resources {
             srcDir 'src/resources'
@@ -30,4 +30,22 @@ compileJava.doFirst {
   if (proc.waitFor() != 0) {
     throw new RuntimeException('thrift sourcecode generation failed')
   }  
+}
+
+task runServer(dependsOn: sourceSets.main.runtimeClasspath) << { task ->
+Process proc = ["java", "-cp", task.project.sourceSets.main.runtimeClasspath.asPath, "com.log4p.services.RunCategoryServer"].execute()
+   proc.consumeProcessErrorStream(System.err)
+   proc.consumeProcessOutputStream(System.out)
+   if (proc.waitFor() != 0) {
+       throw new RuntimeException('exec failed')
+   }
+}
+
+task runClient(dependsOn: sourceSets.main.runtimeClasspath) << { task ->
+Process proc = ["java", "-cp", task.project.sourceSets.main.runtimeClasspath.asPath, "com.log4p.services.CategoryServiceClient"].execute()
+   proc.consumeProcessErrorStream(System.err)
+   proc.consumeProcessOutputStream(System.out)
+   if (proc.waitFor() != 0) {
+       throw new RuntimeException('exec failed')
+   }
 }
