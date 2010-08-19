@@ -21,6 +21,9 @@ sourceSets {
 }
 
 compileJava.doFirst {
+  generatedSourcesDir = new File('src/generated/java')
+  generatedSourcesDir.mkdirs()
+  
   Process proc = ["/usr/local/bin/thrift", "--gen", "java:beans", "-o", "src/generated/java", "src/main/thrift/categoryService.thrift"].execute()
   proc.consumeProcessErrorStream(System.err)
   proc.consumeProcessOutputStream(System.out)
