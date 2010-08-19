@@ -8,6 +8,9 @@ import org.apache.thrift.transport.TTransportException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Setup a server and connect our CategoryService implementation to it.
+ */
 public class RunCategoryServer {
 
     private static final Logger log = LoggerFactory.getLogger(RunCategoryServer.class);
