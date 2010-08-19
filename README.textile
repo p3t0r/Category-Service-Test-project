@@ -1,0 +1,21 @@
+Project used to experiment with Thrift. Uses gradle to build.
+
+
+h1. Before building / running
+
+make sure thrift 0.3 is installed from http://incubator.apache.org/thrift/download/ 
+make sure gradle (>= 0.9) is installed
+
+h1. Layout
+
+* actual code in src/main/java
+* thrift file(s) in src/main/thrift/
+* generated sources (by thrift) are in src/generated/java/gen-javabean/
+* configuration and resources in src/main/resources
+
+h1. Compiling
+
+'<pre>gradle compileJava</pre>' should generate and compile all sources
+
+h1. Running
+
