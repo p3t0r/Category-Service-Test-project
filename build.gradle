@@ -1,5 +1,8 @@
 apply plugin: 'java'
 
+defaultTasks "clean", "compileJava" 
+
+
 dependencies {
     compile fileTree(dir: 'lib', include: '*.jar')
     testCompile group: 'junit', name: 'junit', version: '4.8.1'
@@ -9,7 +12,7 @@ sourceSets {
     main {
         java {
             srcDir 'src/main/java'
-            srcDir 'src/generated/gen-javabean'
+            srcDir 'src/generated/java/gen-javabean'
         }
         resources {
             srcDir 'src/resources'
@@ -18,7 +21,7 @@ sourceSets {
 }
 
 compileJava.doFirst {
-  Process proc = ["thrift", "--gen", "java:beans", "-o", "src/generated/java", "src/main/thrift/categoryService.thrift"].execute()
+  Process proc = ["/usr/local/bin/thrift", "--gen", "java:beans", "-o", "src/generated/java", "src/main/thrift/categoryService.thrift"].execute()
   proc.consumeProcessErrorStream(System.err)
   proc.consumeProcessOutputStream(System.out)
   if (proc.waitFor() != 0) {
