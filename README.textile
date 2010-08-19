@@ -3,7 +3,8 @@ Project used to experiment with Thrift. Uses gradle to build.
 
 h1. Before building / running
 
-make sure thrift 0.3 is installed from http://incubator.apache.org/thrift/download/ 
+make sure thrift 0.3 is installed from http://incubator.apache.org/thrift/download/ the gradle script assumes the thrift executable to be in /usr/local/bin/thrift
+
 make sure gradle (>= 0.9) is installed
 
 h1. Layout
