@@ -1,4 +1,4 @@
-namespace java nl.marktplaats.cas.servicecategory
+namespace java com.log4p.services
 
 struct Category {
   1: i64 id
