@@ -1,0 +1,27 @@
+apply plugin: 'java'
+
+dependencies {
+    compile fileTree(dir: 'lib', include: '*.jar')
+    testCompile group: 'junit', name: 'junit', version: '4.8.1'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+            srcDir 'src/generated/gen-javabean'
+        }
+        resources {
+            srcDir 'src/resources'
+        }
+    }
+}
+
+compileJava.doFirst {
+  Process proc = ["thrift", "--gen", "java:beans", "-o", "src/generated/java", "src/main/thrift/categoryService.thrift"].execute()
+  proc.consumeProcessErrorStream(System.err)
+  proc.consumeProcessOutputStream(System.out)
+  if (proc.waitFor() != 0) {
+    throw new RuntimeException('thrift sourcecode generation failed')
+  }  
+}
